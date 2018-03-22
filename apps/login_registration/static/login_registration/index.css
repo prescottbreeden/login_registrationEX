@@ -1,0 +1,104 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+.header input {
+	margin: 20px 20px;
+	outline: none;
+	border: none;
+}
+.header input:hover {
+
+	animation-name: grow;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-duration: 1s;
+}
+.landing_title {
+	margin: 0 10px;
+	margin-top: 15px;
+}
+.nav {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	background-color: steelblue;
+	color: white;
+	line-height: 30px;
+	margin-bottom: 100px;
+}
+.nav a {
+	text-decoration: none; 
+	color: white;
+	line-height: 40px;
+}
+.nav a:hover {
+	color: black;
+}
+.nav_button{
+	flex-basis: 25%;
+	text-align: center;
+}
+.nav_button:hover{
+	background-color: white;
+	color: black;
+	transition-duration: 1s;
+}
+.content {
+	display: flex;
+	justify-content: center;
+}
+.registration_divider {
+	width: 1px;
+	margin: 0 50px;
+	border-right: 2px solid grey;
+}
+.logged_in {
+	/*visibility: hidden;*/
+	display: none;
+/*	background-color: pink;*/
+}
+.welcome {
+	text-align: center;
+	transition-duration: 1s;
+	animation-name: slide_up;
+	animation-duration: 1s;
+	/*animation-name: fade_in;*/
+	animation-fill-mode: forwards;
+}
+.error_messages{
+	margin: 0 auto;
+	color: red;
+	text-align: center;
+}
+@keyframes grow {
+	0% {
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(1.5);
+	}
+}
+
+@keyframes slide_up{
+	0% {
+		transform: translateY(100px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+@keyframes fade_in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

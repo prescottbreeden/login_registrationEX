@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Users Index</title>
+</head>
+<body>
+	<div class="database_table">
+		<h2>Users</h2>
+		<table>
+			<thead>
+				<th></th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Created at</th>
+				<th>Updated at</th>
+				<th class="button-bx"></th>
+				<th class="button-bx"></th>
+			</thead>
+{% for user in users %}
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{{ user.first_name }}</td>
+			<td>{{ user.last_name }}</td>
+			<td>{{ user.email }}</td>
+			<td>{{ user.created_at }}</td>
+			<td>{{ user.updated_at }}</td>
+			<td><a href="/users/{{ user.id }}">Show</a></td>
+			<td><a href="/users/{{ user.id }}/edit">Edit</a></td>
+			<td><a href="/users/{{ user.id }}/destroy">Delete</a></td>
+		</tr>
+{% endfor %}
+		</table>
+	</div>
+	<h3><a href="/users/new">Add a new user</a></h3>
+</body>
+</html>

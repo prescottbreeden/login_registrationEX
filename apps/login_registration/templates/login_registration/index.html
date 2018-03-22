@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Amadon</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'login_registration/index.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+	<div class="header">
+		<h1 class="landing_title">Amadon Web Services</h1>
+		<form action="/logout" method="POST">
+		{% csrf_token %}
+		<input type="submit" value="Logout">
+		</form>
+	</div>
+	<div class="nav">
+		<div class="nav_button"><a href="/">Home</a></div>
+		<div class="nav_button"><a href="/">Your Account</a></div>
+		<div class="nav_button"><a href="/users">See All Users</a></div>
+		<div class="nav_button"><a href="/users/new">Add User</a></div>
+	</div>
+	<div class="content {{request.session.status}}">
+		<div class="registration_form">
+		<h4>Register</h4>
+	    <form action="/register" method="post">
+	    	{% csrf_token %}
+	        <table>
+	            <tr>
+	                <td>
+	                    <!-- first name_input -->
+	                    <label for="first_name">First Name:</label>
+	                </td>
+	                <td>
+	                    <input type="text" placeholder="first name" name="first_name">
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <!-- last name_input -->
+	                    <label for="last_name">Last Name:</label>
+	                </td>
+	                <td>
+	                    <input type="text" placeholder="last name" name="last_name">
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <!-- Email: -->
+	                    <label for="email">Email:</label>
+	                </td>
+	                <td>
+	                    <input type="text" placeholder="email"  name="email">
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <!-- Password_input -->
+	                    <label for="password">Password:</label>
+	                </td>
+	                <td>
+	                    <input type="password" placeholder="password" name="password">
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <!-- Password Confirmation -->
+	                    <label for="cpassword">PW Confirm:</label>
+	                </td>
+	                <td>
+	                    <input type="password" placeholder="confirm password" name="cpassword">
+	                </td>
+	            </tr>
+	            <tr>
+	            	<td></td>
+	            	<td><input type="submit" value="Register"></td>
+	            </tr>
+	        </table>
+	    </form> 
+		</div>
+		<div class="registration_divider"></div>
+		<div class="login_form {{request.session.status}}">
+			<h4 class="(( session['status'] ))">Log in</h4>
+			<form action='/login' method='POST'>
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><label for="email">Email:</label></td>
+					<td><input type="text" placeholder='email' name="email" value=""></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><label for="password">Password:</label></td>
+					<td><input type="password" placeholder='password' name="password"></td>
+					<td><input type="submit" value="Login"></td></form>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="error_messages">
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+	{% if 'super_user_id' in request.session %}
+		<div class="welcome">
+			<h4 class='fade_in slide_up'> Welcome {{ super_user.first_name }} {{ super_user.last_name }}! </h4>
+		</div>
+	{% endif %}
+</body>
+</html>
