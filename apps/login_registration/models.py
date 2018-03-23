@@ -1,8 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
-import re
-import bcrypt
 from django.conf import settings
+import re, bcrypt
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 

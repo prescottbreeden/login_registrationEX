@@ -5,11 +5,11 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    path('', views.all_users),
-    path('<int:id>', views.view_user),
-    path('new', views.new_user),
-    path('new/create', views.create_user),
-    path('<int:id>/edit', views.edit_user),
-    path('<int:id>/edit/update', views.update_user),
-    path('<int:id>/destroy', views.destroy_user),
+    path('', views.all_users, name = 'users'),
+    path('<int:id>', views.view_user, name = 'view_user'),
+    path('new', views.new_user, name = 'new_user'),
+    path('new/create', views.create_user, name = 'create_user'),
+    path('<int:id>/edit', views.edit_user, name = 'edit_user'),
+    path('<int:id>/update', views.update_user, name = 'update_user'),
+    path('<int:id>/delete', views.delete_user, name = 'delete_user'),
 ]

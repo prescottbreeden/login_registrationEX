@@ -26,14 +26,13 @@ def create_user(request):
 		print('errors found')
 		return redirect('users/new')
 	else:
-		print('no errors found')
 		# User.objects.update_user(request.POST)
 		User.objects.create(
 			first_name = request.POST['first_name'],
 			last_name = request.POST['last_name'],
 			email = request.POST['email']
 			)
-		return redirect('users')
+		return redirect('users/')
 
 # dedicated page to a single user's info
 def view_user(request, id):
@@ -55,11 +54,8 @@ def update_user(request, id):
 	if len(errors):
 		# for tag, error in errors.iteritems():
 		# 	messages.error(request, error, extra_tags=tag)
-		print('errors found')
-		return redirect(f'{id}/edit')
+		return redirect(f'users/{id}/edit')
 	else:
-		print('no errors found')
-		# User.objects.update_user(request.POST)
 		user = User.objects.get(id=id)
 		user.first_name = request.POST['first_name']
 		user.last_name = request.POST['last_name']
@@ -68,9 +64,9 @@ def update_user(request, id):
 		return redirect('users')
 
 # delete user from DB
-def destroy_user(request, id):
+def delete_user(request, id):
 	User.objects.get(id=id).delete()
-	return redirect('/users')
+	return redirect('users')
 
 
 
